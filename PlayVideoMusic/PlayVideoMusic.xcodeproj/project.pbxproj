@@ -53,6 +53,7 @@
 		05ECF99F29555F6C0048BD42 /* PreviewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05ECF99E29555F6C0048BD42 /* PreviewProvider.swift */; };
 		05ECF9A329555F8B0048BD42 /* VideoImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05ECF9A129555F8B0048BD42 /* VideoImageModel.swift */; };
 		05ECF9A429555F8B0048BD42 /* VideoImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05ECF9A229555F8B0048BD42 /* VideoImageView.swift */; };
+		05FCA15C29F9656900D8029C /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FCA15B29F9656900D8029C /* StringExtension.swift */; };
 		05FD32B029642DF100D91DBD /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FD32AF29642DF100D91DBD /* Utility.swift */; };
 		05FD32EB296678FA00D91DBD /* PlayerControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FD32EA296678FA00D91DBD /* PlayerControlsView.swift */; };
 		05FD330A2966979600D91DBD /* ProgressPlayVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FD33092966979600D91DBD /* ProgressPlayVideoView.swift */; };
@@ -107,6 +108,7 @@
 		05ECF99E29555F6C0048BD42 /* PreviewProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewProvider.swift; sourceTree = "<group>"; };
 		05ECF9A129555F8B0048BD42 /* VideoImageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoImageModel.swift; sourceTree = "<group>"; };
 		05ECF9A229555F8B0048BD42 /* VideoImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoImageView.swift; sourceTree = "<group>"; };
+		05FCA15B29F9656900D8029C /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		05FD32AF29642DF100D91DBD /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		05FD32EA296678FA00D91DBD /* PlayerControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerControlsView.swift; sourceTree = "<group>"; };
 		05FD33092966979600D91DBD /* ProgressPlayVideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressPlayVideoView.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 		05825E5129514AFC0064632F /* PlayVideoMusic */ = {
 			isa = PBXGroup;
 			children = (
+				05FCA15A29F9605500D8029C /* Services */,
 				05825E6529514B520064632F /* App */,
 				05ECF99D29555F6C0048BD42 /* Utilities */,
 				05ECF98529555E5D0048BD42 /* APIService */,
@@ -195,6 +198,7 @@
 				05825E6129514B4D0064632F /* ViewExtension.swift */,
 				05825E6229514B4D0064632F /* ColorExtension.swift */,
 				05878A5529681FCD00EF1CA2 /* UIApplicationExtension.swift */,
+				05FCA15B29F9656900D8029C /* StringExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -227,7 +231,6 @@
 			isa = PBXGroup;
 			children = (
 				05825E942952BB170064632F /* MiniPlayer */,
-				05825E902951B9B90064632F /* PlayerVideo */,
 				05825E692951543B0064632F /* Splash */,
 				05825E6D2951547A0064632F /* Tabbar */,
 				05825E7829518F9D0064632F /* Home */,
@@ -303,13 +306,6 @@
 				05825E8A29519F280064632F /* BaseHeaderContainerView.swift */,
 			);
 			path = BaseHeader;
-			sourceTree = "<group>";
-		};
-		05825E902951B9B90064632F /* PlayerVideo */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = PlayerVideo;
 			sourceTree = "<group>";
 		};
 		05825E912952B91D0064632F /* BlurView */ = {
@@ -516,6 +512,13 @@
 			path = VideoImage;
 			sourceTree = "<group>";
 		};
+		05FCA15A29F9605500D8029C /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		05FD32E9296678ED00D91DBD /* SubViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -618,6 +621,7 @@
 				05FD330A2966979600D91DBD /* ProgressPlayVideoView.swift in Sources */,
 				05FD330C2966A20800D91DBD /* ProgressPlayVideoViewModel.swift in Sources */,
 				05FD32B029642DF100D91DBD /* Utility.swift in Sources */,
+				05FCA15C29F9656900D8029C /* StringExtension.swift in Sources */,
 				05825E8B29519F280064632F /* BaseHeaderNavigationLink.swift in Sources */,
 				05FD32EB296678FA00D91DBD /* PlayerControlsView.swift in Sources */,
 				05825E6F295154800064632F /* MainTabbarView.swift in Sources */,
