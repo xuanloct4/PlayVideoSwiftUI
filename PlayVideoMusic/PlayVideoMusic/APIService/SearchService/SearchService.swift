@@ -37,11 +37,11 @@ extension SearchService {
             return
         }
         debugPrint("🟠 URL REQUEST: \(url)")
-        searchVideoSubscription = BaseApiService.request(from: url)
-            .decode(type: SearchVideoModel.self, decoder: JSONDecoder())
-            .sink(receiveCompletion: BaseApiService.handleCompletion, receiveValue: { searchVideos in
-           	     self.items = searchVideos.items ?? []
-                self.searchVideoSubscription?.cancel()
-            })
+//        searchVideoSubscription = BaseApiService.request(from: url)
+//            .decode(type: SearchVideoModel.self, decoder: JSONDecoder())
+//            .sink(receiveCompletion: BaseApiService.handleCompletion, receiveValue: { searchVideos in
+//           	     self.items = searchVideos.items ?? []
+//                self.searchVideoSubscription?.cancel()
+//            })
     }
 }

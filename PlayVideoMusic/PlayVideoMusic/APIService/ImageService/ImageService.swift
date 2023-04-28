@@ -22,13 +22,13 @@ class ImageService {
         guard let url = URL(string: urlString) else {
             return
         }
-        imageSubscription = BaseApiService.request(from: url)
-            .tryMap({ (data) -> UIImage? in
-                return UIImage(data: data)
-            })
-            .sink(receiveCompletion: BaseApiService.handleCompletion, receiveValue: { image in
-                self.image = image
-                self.imageSubscription?.cancel()
-            })
+//        imageSubscription = BaseApiService.request(from: url)
+//            .tryMap({ (data) -> UIImage? in
+//                return UIImage(data: data)
+//            })
+//            .sink(receiveCompletion: BaseApiService.handleCompletion, receiveValue: { image in
+//                self.image = image
+//                self.imageSubscription?.cancel()
+//            })
     }
 }

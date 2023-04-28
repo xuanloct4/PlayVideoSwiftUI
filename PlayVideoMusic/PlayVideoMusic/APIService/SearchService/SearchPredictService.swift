@@ -42,11 +42,12 @@ extension SearchPredictService {
             return
         }
         debugPrint("🟠 URL REQUEST: \(url)")
-        searchVideoSubscription = BaseApiService.requestNotObject(from: url)
-            .decode(type: [String].self, decoder: JSONDecoder())
-            .sink(receiveCompletion: BaseApiService.handleCompletion, receiveValue: { searchResults in
-                self.items = searchResults
-                self.searchVideoSubscription?.cancel()
-            })
+        
+//        searchVideoSubscription = BaseApiService.requestNotObject(from: url)
+//            .decode(type: [String].self, decoder: JSONDecoder())
+//            .sink(receiveCompletion: BaseApiService.handleCompletion, receiveValue: { searchResults in
+//                self.items = searchResults
+//                self.searchVideoSubscription?.cancel()
+//            })
     }
 }

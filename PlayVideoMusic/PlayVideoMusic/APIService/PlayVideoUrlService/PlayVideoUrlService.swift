@@ -40,11 +40,11 @@ extension PlayVideoUrlService {
         urlRequest.allHTTPHeaderFields = httpHeader
         urlRequest.httpMethod = Constant.HTTPMethod.getMethod
         
-        playVideoUrlSubscription = BaseApiService.request(from: urlRequest)
-            .decode(type: MiniPlayerModel.self, decoder: JSONDecoder())
-            .sink(receiveCompletion: BaseApiService.handleCompletion, receiveValue: { miniPlayerModel in
-                self.miniPlayerModel = miniPlayerModel
-                self.playVideoUrlSubscription?.cancel()
-            })
+//        playVideoUrlSubscription = BaseApiService.request(from: urlRequest)
+//            .decode(type: MiniPlayerModel.self, decoder: JSONDecoder())
+//            .sink(receiveCompletion: BaseApiService.handleCompletion, receiveValue: { miniPlayerModel in
+//                self.miniPlayerModel = miniPlayerModel
+//                self.playVideoUrlSubscription?.cancel()
+//            })
     }
 }
