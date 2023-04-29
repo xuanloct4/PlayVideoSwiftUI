@@ -20,12 +20,12 @@ class PlayVideoUrlService {
 }
 
 extension PlayVideoUrlService {
-    func fetchInfomationVideo(with videoId: String) {
+    func fetchInfomationVideo(with videoId: String) -> AnyPublisher<MiniPlayerModel, APIError> {
         let apiPath = String(format: baseApiPath, videoId)
         guard let urlComponents = URLComponents(string: apiPath),
               let url = urlComponents.url,
               let userId = Constant.KeyServices.uuid else {
-            return
+            return Fail(error: APIError.errorURL).eraseToAnyPublisher()
         }
         
         let httpHeader: [String: String] = [
@@ -39,12 +39,8 @@ extension PlayVideoUrlService {
         var urlRequest = URLRequest(url: url, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 10)
         urlRequest.allHTTPHeaderFields = httpHeader
         urlRequest.httpMethod = Constant.HTTPMethod.getMethod
-        
-//        playVideoUrlSubscription = BaseApiService.request(from: urlRequest)
-//            .decode(type: MiniPlayerModel.self, decoder: JSONDecoder())
-//            .sink(receiveCompletion: BaseApiService.handleCompletion, receiveValue: { miniPlayerModel in
-//                self.miniPlayerModel = miniPlayerModel
-//                self.playVideoUrlSubscription?.cancel()
-//            })
+        return BaseApiService.shared.request(from: urlRequest)
+            .map(\.value)
+            .eraseToAnyPublisher()
     }
 }

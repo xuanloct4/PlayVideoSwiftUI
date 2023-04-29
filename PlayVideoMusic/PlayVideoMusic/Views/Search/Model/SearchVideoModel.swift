@@ -22,7 +22,7 @@ struct SearchVideoGetRequest {
 
 // MARK: - ChannelResponse
 struct SearchVideoModel: Codable {
-    let kind, etag: String
+    let kind, etag, nextPageToken, regionCode: String?
     let pageInfo: PageInfo
     let items: [Item]?
 }
@@ -30,7 +30,8 @@ struct SearchVideoModel: Codable {
 // MARK: - Item
 struct Item: Identifiable, Codable {
     var id: UUID = UUID()
-    let kind, etag: String?
+    let kind: String?
+    let etag: String?
     let idVideo: IDVideo
     let snippet: Snippet?
     
@@ -44,7 +45,9 @@ struct Item: Identifiable, Codable {
 
 // MARK: - ID
 struct IDVideo: Codable {
-    let kind, videoID, channelID: String?
+    let kind: String?
+    let videoID: String?
+    let channelID: String?
     enum CodingKeys: String, CodingKey {
         case kind
         case videoID = "videoId"
@@ -55,9 +58,12 @@ struct IDVideo: Codable {
 // MARK: - Snippet
 struct Snippet: Codable {
     let publishedAt: String?
-    let channelID, title, snippetDescription: String?
+    let channelID: String?
+    let title: String?
+    let snippetDescription: String?
     let thumbnails: Thumbnails?
-    let channelTitle, liveBroadcastContent: String?
+    let channelTitle: String?
+    let liveBroadcastContent: String?
     let publishTime: String?
 
     enum CodingKeys: String, CodingKey {

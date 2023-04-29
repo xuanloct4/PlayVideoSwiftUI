@@ -43,6 +43,58 @@ class BaseApiService {
 }
 
 extension BaseApiService {
+    // MARK: Fetch Api With URLRequest
+    func request<T: Decodable>(from urlRequest: URLRequest) -> AnyPublisher<Response<T>, APIError> {
+        return URLSession.shared.dataTaskPublisher(for: urlRequest)
+            .subscribe(on: DispatchQueue.global(qos: .default))
+            .tryMap { result in
+                guard let httpResponse = result.response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
+                    print("status code for api response : \((result.response as? HTTPURLResponse)?.statusCode ?? 200)")
+                    throw APIError.invalidResponse
+                }
+
+                let decoder = JSONDecoder()
+                let value = try decoder.decode(T.self, from: result.data)
+                return Response(value: value, response: result.response)
+            }
+            .mapError { error -> APIError in
+                switch error {
+                case is URLError:
+                    return .errorURL
+                case is DecodingError:
+                    return .errorParsing
+                default:
+                    return error as? APIError ?? .unknown
+                }
+            }
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
+    }
+
+    // MARK: Fetch URL Image
+    func requestImage(url: URL) -> AnyPublisher<Data, APIError> {
+        return URLSession.shared.dataTaskPublisher(for: url)
+            .subscribe(on: DispatchQueue.global(qos: .default))
+            .tryMap { output in
+                guard let response = output.response as? HTTPURLResponse,
+                      response.statusCode >= 200 && response.statusCode < 300 else {
+                    throw APIError.invalidResponse
+                }
+                return output.data
+            }
+            .mapError { error -> APIError in
+                switch error {
+                case is URLError:
+                    return .errorURL
+                case is DecodingError:
+                    return .errorParsing
+                default:
+                    return error as? APIError ?? .unknown
+                }
+            }
+            .eraseToAnyPublisher()
+    }
+
     // MARK: Fetch Data Normal From API With URL Request
     func request<T: Decodable>(url: URL) -> AnyPublisher<Response<T>, APIError> {
         return URLSession.shared.dataTaskPublisher(for: url)
@@ -71,7 +123,7 @@ extension BaseApiService {
     }
 
     // MARK: Fetch Data Not Object From API
-    func requestNotObject(from url: URL) -> AnyPublisher<Data, Error> {
+    func requestNotObject(from url: URL) -> AnyPublisher<Data, APIError> {
         return URLSession.shared.dataTaskPublisher(for: url)
             .subscribe(on: DispatchQueue.global(qos: .default))
             .tryMap { try self.handleNotObjURLResponse(output: $0) }

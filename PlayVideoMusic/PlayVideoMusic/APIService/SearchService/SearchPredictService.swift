@@ -24,7 +24,7 @@ class SearchPredictService {
 }
 
 extension SearchPredictService {
-    func fetchSearchResult(query: String) {
+    func fetchSearchResult(query: String) -> AnyPublisher<Data, APIError> {
         let request = SearchPredictGetRequest(client: "firefox", description: "yt", languageType: "en-gb", formatType: "vn")
         let queryItems = [URLQueryItem(name: "client", value: request.client),
                           URLQueryItem(name: "gl", value: request.formatType),
@@ -34,20 +34,15 @@ extension SearchPredictService {
                           URLQueryItem(name: "ie", value: "utf-8")]
         let apiPath = String(format: baseApiPath, youtubeSearchService)
         guard var urlComponents = URLComponents(string: apiPath) else {
-            return
+            return Fail(error: APIError.errorURL).eraseToAnyPublisher()
         }
 
         urlComponents.queryItems = queryItems
         guard let url = urlComponents.url else {
-            return
+            return Fail(error: APIError.errorURL).eraseToAnyPublisher()
         }
         debugPrint("🟠 URL REQUEST: \(url)")
-        
-//        searchVideoSubscription = BaseApiService.requestNotObject(from: url)
-//            .decode(type: [String].self, decoder: JSONDecoder())
-//            .sink(receiveCompletion: BaseApiService.handleCompletion, receiveValue: { searchResults in
-//                self.items = searchResults
-//                self.searchVideoSubscription?.cancel()
-//            })
+        return BaseApiService.shared.requestNotObject(from: url)
+            .eraseToAnyPublisher()
     }
 }

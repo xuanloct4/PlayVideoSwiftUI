@@ -9,7 +9,7 @@ import SwiftUI
 
 struct VideoImageView: View {
     @StateObject var viewModel: VideoImageModel
-    
+
     init(snippet: Snippet) {
         _viewModel = StateObject(wrappedValue: VideoImageModel(snippet: snippet))
     }

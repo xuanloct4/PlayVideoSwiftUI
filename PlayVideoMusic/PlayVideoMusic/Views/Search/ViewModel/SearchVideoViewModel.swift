@@ -29,10 +29,14 @@ class SearchVideoViewModel: ObservableObject {
 extension SearchVideoViewModel {
     func loadVideoWhenSelectedResult(result: String) {
         dataSearchVideoService.fetchSearchVideo(result: result)
-        dataSearchVideoService.$items
-            .sink { [weak self] videos in
-                self?.videoItems = videos
-            }
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { status in
+                print("ANHND47 status: \(status)")
+            }, receiveValue: { [weak self] videos in
+                if let items = videos.items {
+                    self?.videoItems = items
+                }
+            })
             .store(in: &cancellables)
     }
 }
@@ -40,10 +44,13 @@ extension SearchVideoViewModel {
 extension SearchVideoViewModel {
     private func loadDataSearchPredict(query: String) {
         dataSearchPredictService.fetchSearchResult(query: query)
-        dataSearchPredictService.$items
-            .sink { [weak self] items in
-                self?.suggestItems = items
-            }
-            .store(in: &cancellables)
+            .decode(type: [String].self, decoder: JSONDecoder())
+            .sink(receiveCompletion: { status in
+                print("ANHND47 status: \(status)")
+            }, receiveValue: { [weak self] items in
+                DispatchQueue.main.async {
+                    self?.suggestItems = items
+                }
+            })
     }
 }
