@@ -50,6 +50,8 @@ class DeveloperPreview {
     let searchVideoPreview: SearchVideoModel = SearchVideoModel(
         kind: "youtube#searchListResponse",
         etag: "aUd-u8CExOLOU6HABxHZkYb_JJk",
+        nextPageToken: "CBkQAA",
+        regionCode: "VN",
         pageInfo: PageInfo(totalResults: 683946,
                            resultsPerPage: 25),
         items: [

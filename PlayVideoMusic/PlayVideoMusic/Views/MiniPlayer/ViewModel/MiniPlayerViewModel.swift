@@ -35,14 +35,16 @@ class MiniPlayerViewModel: ObservableObject {
     
     func loadInfoVideo(videoId: String) {
         dataSearchVideoService.fetchInfomationVideo(with: videoId)
-        dataSearchVideoService.$miniPlayerModel
-            .sink { [weak self] miniPlayer in
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { status in
+                print("ANHND47 status: \(status)")
+            }, receiveValue: { [weak self] miniPlayer in
                 guard let self = self else {
                     return
                 }
                 self.isHaveUrl = true
                 self.miniPlayData = miniPlayer
-            }
+            })
             .store(in: &subscriptions)
     }
 }

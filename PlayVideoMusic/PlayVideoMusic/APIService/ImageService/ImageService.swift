@@ -14,15 +14,15 @@ class ImageService {
     
     var imageSubscription: AnyCancellable?
     
-    init(urlString: String) {
-        getImage(urlString: urlString)
+    init() {
     }
     
-    private func getImage(urlString: String) {
+    func getImage(urlString: String) -> AnyPublisher<Data, APIError> {
         guard let url = URL(string: urlString) else {
-            return
+            return Fail(error: APIError.errorURL).eraseToAnyPublisher()
         }
-//        imageSubscription = BaseApiService.request(from: url)
+        return BaseApiService.shared.requestImage(url: url)
+            .eraseToAnyPublisher()
 //            .tryMap({ (data) -> UIImage? in
 //                return UIImage(data: data)
 //            })

@@ -19,18 +19,18 @@ class ProgressPlayVideoViewModel: ObservableObject {
     
     init(snippet: Snippet) {
         self.snippet = snippet
-        self.dataService = ImageService(urlString: snippet.thumbnails?.medium?.url ?? "")
-        self.addSubscripbers()
+        self.dataService = ImageService()
+//        self.addSubscripbers()
     }
     
     func addSubscripbers() {
-        dataService.$image
-            .sink { [weak self] image in
-                guard let self = self else {
-                    return
-                }
-                self.image = image
-            }
-            .store(in: &cancellables)
+//        dataService.$image
+//            .sink { [weak self] image in
+//                guard let self = self else {
+//                    return
+//                }
+//                self.image = image
+//            }
+//            .store(in: &cancellables)
     }
 }
