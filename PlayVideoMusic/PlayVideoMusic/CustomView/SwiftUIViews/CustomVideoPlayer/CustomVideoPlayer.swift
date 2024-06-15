@@ -29,7 +29,7 @@ struct CustomVideoPlayer: UIViewRepresentable {
         private let parent: CustomVideoPlayer
         private var controller: AVPictureInPictureController?
         private var cancellable: AnyCancellable?
-        
+        private var subscriptions: Set<AnyCancellable> = []
         init(_ parent: CustomVideoPlayer) {
             self.parent = parent
             super.init()
@@ -46,12 +46,26 @@ struct CustomVideoPlayer: UIViewRepresentable {
                         controller.stopPictureInPicture()
                     }
                 }
+            cancellable?.store(in: &subscriptions)
         }
         
         func setController(_ playerLayer: AVPlayerLayer) {
-            controller = AVPictureInPictureController(playerLayer: playerLayer)
-//            controller?.canStartPictureInPictureAutomaticallyFromInline = true
+            if AVPictureInPictureController.isPictureInPictureSupported() {
+                controller = AVPictureInPictureController(playerLayer: playerLayer)
+               }
+            if #available(iOS 14.2, *) {
+                controller?.canStartPictureInPictureAutomaticallyFromInline = true
+            } else {
+                // Fallback on earlier versions
+            }
+            
             controller?.delegate = self
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
+                if self?.controller?.isPictureInPictureActive == false {
+                    self?.controller?.startPictureInPicture()
+                }
+            }
         }
         
         func pictureInPictureControllerDidStartPictureInPicture(_ pictureInPictureController: AVPictureInPictureController) {

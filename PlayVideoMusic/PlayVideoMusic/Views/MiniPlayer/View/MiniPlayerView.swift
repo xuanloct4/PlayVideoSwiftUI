@@ -9,6 +9,7 @@ import SwiftUI
 import AVFoundation
 
 struct MiniPlayerView: View {
+    @Environment(\.scenePhase) var scenePhase
     @EnvironmentObject var miniPlayer: MiniPlayerViewModel
     
     // MARK: Property Handle UI
@@ -69,6 +70,27 @@ struct MiniPlayerView: View {
                 }
             }
         }
+        
+//                            .onChange(of: scenePhase) { oldPhase, newPhase in
+//                                           if newPhase == .active {
+//                                               print("Active")
+//                                               playerViewModel.isInPipMode = false
+//                                           } else if newPhase == .inactive {
+//                                               playerViewModel.isInPipMode = true
+//                                               print("Inactive")
+//                                           } else if newPhase == .background {
+//                                               print("Background")
+//                                               playerViewModel.isInPipMode = true
+//                                           }
+//                                       }
+        .onReceive(NotificationCenter.default.publisher(
+            for: UIScene.didEnterBackgroundNotification)) { _ in
+                playerViewModel.isInPipMode = true
+            }
+            .onReceive(NotificationCenter.default.publisher(
+                for: UIScene.willEnterForegroundNotification)) { _ in
+                    playerViewModel.isInPipMode = false
+                }
         .frame(maxWidth: .infinity, maxHeight: miniPlayer.isNormalPlayer ? .infinity : 60)
         .background(
             backgroundPlayView

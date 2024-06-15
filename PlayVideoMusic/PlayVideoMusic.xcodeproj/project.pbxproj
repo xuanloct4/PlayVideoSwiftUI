@@ -113,6 +113,8 @@
 		05FD32EA296678FA00D91DBD /* PlayerControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerControlsView.swift; sourceTree = "<group>"; };
 		05FD33092966979600D91DBD /* ProgressPlayVideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressPlayVideoView.swift; sourceTree = "<group>"; };
 		05FD330B2966A20800D91DBD /* ProgressPlayVideoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressPlayVideoViewModel.swift; sourceTree = "<group>"; };
+		2CF10C462C1D20AC008E63FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		2CF10C472C1D20CE008E63FC /* PlayVideoMusic.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PlayVideoMusic.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,11 +172,12 @@
 		05825E5129514AFC0064632F /* PlayVideoMusic */ = {
 			isa = PBXGroup;
 			children = (
+				2CF10C472C1D20CE008E63FC /* PlayVideoMusic.entitlements */,
+				2CF10C462C1D20AC008E63FC /* Info.plist */,
 				05FCA15A29F9605500D8029C /* Services */,
 				05825E6529514B520064632F /* App */,
 				05ECF99D29555F6C0048BD42 /* Utilities */,
 				05ECF98529555E5D0048BD42 /* APIService */,
-				05825E6629514E3D0064632F /* Constant */,
 				05825E6029514B4D0064632F /* Extensions */,
 				05825E8429519F1C0064632F /* CustomView */,
 				05825E6C295154470064632F /* Views */,
@@ -456,6 +459,7 @@
 			isa = PBXGroup;
 			children = (
 				05ECF98C29555E5D0048BD42 /* BaseApiService.swift */,
+				05825E6629514E3D0064632F /* Constant */,
 			);
 			path = APIService;
 			sourceTree = "<group>";
@@ -780,12 +784,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = PlayVideoMusic/PlayVideoMusic.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PlayVideoMusic/Preview Content\"";
-				DEVELOPMENT_TEAM = BP2GHWM7V6;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 4FRTXRNKDM;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PlayVideoMusic/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -797,8 +805,10 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = duyanhdev192.PlayVideoMusic;
+				PRODUCT_BUNDLE_IDENTIFIER = vn.abbank.retail.uat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = RetailUatForInhouseBuild;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -810,12 +820,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = PlayVideoMusic/PlayVideoMusic.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PlayVideoMusic/Preview Content\"";
-				DEVELOPMENT_TEAM = BP2GHWM7V6;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 4FRTXRNKDM;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PlayVideoMusic/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -827,8 +841,10 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = duyanhdev192.PlayVideoMusic;
+				PRODUCT_BUNDLE_IDENTIFIER = vn.abbank.retail.uat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = RetailUatForInhouseBuild;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "66CC6473-7954-4B8C-9EDF-0DD7B65C4FC4"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9F881EAE-840B-44E3-B33E-2D8C04012FC6"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PlayVideoMusic/CustomView/SwiftUIViews/CustomVideoPlayer/CustomVideoPlayer.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
+            landmarkName = "pictureInPictureControllerDidStartPictureInPicture(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "9F881EAE-840B-44E3-B33E-2D8C04012FC6 - 6480d1679171485d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PlayVideoMusic.CustomVideoPlayer.Coordinator.pictureInPictureControllerDidStartPictureInPicture(__C.AVPictureInPictureController) -&gt; ()"
+                  moduleName = "PlayVideoMusic"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/loctv1/Downloads/PlayVideoSwiftUI/PlayVideoMusic/PlayVideoMusic/CustomView/SwiftUIViews/CustomVideoPlayer/CustomVideoPlayer.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "65"
+                  endingLineNumber = "65"
+                  offsetFromSymbolStart = "108">
+               </Location>
+               <Location
+                  uuid = "9F881EAE-840B-44E3-B33E-2D8C04012FC6 - 6480d1679171485d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PlayVideoMusic.CustomVideoPlayer.Coordinator.pictureInPictureControllerDidStartPictureInPicture(__C.AVPictureInPictureController) -&gt; ()"
+                  moduleName = "PlayVideoMusic"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/loctv1/Downloads/PlayVideoSwiftUI/PlayVideoMusic/PlayVideoMusic/CustomView/SwiftUIViews/CustomVideoPlayer/CustomVideoPlayer.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "65"
+                  endingLineNumber = "65"
+                  offsetFromSymbolStart = "36">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D7C72567-7A64-497E-8E6E-054EFC9E2946"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PlayVideoMusic/CustomView/SwiftUIViews/CustomVideoPlayer/CustomVideoPlayer.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
+            landmarkName = "pictureInPictureControllerWillStopPictureInPicture(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "D7C72567-7A64-497E-8E6E-054EFC9E2946 - 85171eed7b000f70"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PlayVideoMusic.CustomVideoPlayer.Coordinator.pictureInPictureControllerWillStopPictureInPicture(__C.AVPictureInPictureController) -&gt; ()"
+                  moduleName = "PlayVideoMusic"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/loctv1/Downloads/PlayVideoSwiftUI/PlayVideoMusic/PlayVideoMusic/CustomView/SwiftUIViews/CustomVideoPlayer/CustomVideoPlayer.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "69"
+                  endingLineNumber = "69"
+                  offsetFromSymbolStart = "108">
+               </Location>
+               <Location
+                  uuid = "D7C72567-7A64-497E-8E6E-054EFC9E2946 - 85171eed7b000f70"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PlayVideoMusic.CustomVideoPlayer.Coordinator.pictureInPictureControllerWillStopPictureInPicture(__C.AVPictureInPictureController) -&gt; ()"
+                  moduleName = "PlayVideoMusic"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/loctv1/Downloads/PlayVideoSwiftUI/PlayVideoMusic/PlayVideoMusic/CustomView/SwiftUIViews/CustomVideoPlayer/CustomVideoPlayer.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "69"
+                  endingLineNumber = "69"
+                  offsetFromSymbolStart = "36">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

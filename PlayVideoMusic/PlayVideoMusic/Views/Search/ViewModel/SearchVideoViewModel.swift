@@ -52,5 +52,6 @@ extension SearchVideoViewModel {
                     self?.suggestItems = items
                 }
             })
+            .store(in: &cancellables)
     }
 }

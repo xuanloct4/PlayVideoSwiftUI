@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MainTabbarView: View {
-    @State private var tabSelection: TabbarItem = .home
+    @State private var tabSelection: TabbarItem = .search
     
     @ObservedObject var player = MiniPlayerViewModel()
     

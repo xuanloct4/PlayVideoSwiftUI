@@ -27,7 +27,6 @@ extension PlayVideoUrlService {
               let userId = Constant.KeyServices.uuid else {
             return Fail(error: APIError.errorURL).eraseToAnyPublisher()
         }
-        
         let httpHeader: [String: String] = [
             "x-user-id" : userId,
             "x-cf-country" : "VN",
