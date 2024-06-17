@@ -103,6 +103,7 @@ final class PlayerViewModel: ObservableObject {
         currentTime = .zero
         duration = nil
         player.replaceCurrentItem(with: item)
+        player.play()
         
         item.publisher(for: \.status)
             .filter({ $0 == .readyToPlay })
@@ -117,6 +118,7 @@ final class PlayerViewModel: ObservableObject {
         currentTime = .zero
         duration = nil
         player.replaceCurrentItem(with: avPlayerItem)
+        player.play()
         
         avPlayerItem.publisher(for: \.status)
             .filter({ $0 == .readyToPlay })

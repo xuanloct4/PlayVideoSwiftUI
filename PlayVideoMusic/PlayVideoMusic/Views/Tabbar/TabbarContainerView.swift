@@ -30,13 +30,13 @@ struct TabbarContainerView<Content: View>: View {
     }
 }
 
-struct TabbarContainerView_Previews: PreviewProvider {
-    static let tabs: [TabbarItem] = [.home, .playlist, .search, .setting]
-
-    static var previews: some View {        
-//        TabbarContainerView(selection: .constant(tabs.first!), content: {
-//            Color.red
-//        })
-        MainTabbarView()
-    }
-}
+//struct TabbarContainerView_Previews: PreviewProvider {
+//    static let tabs: [TabbarItem] = [.home, .playlist, .search, .setting]
+//
+//    static var previews: some View {        
+////        TabbarContainerView(selection: .constant(tabs.first!), content: {
+////            Color.red
+////        })
+//        MainTabbarView()
+//    }
+//}

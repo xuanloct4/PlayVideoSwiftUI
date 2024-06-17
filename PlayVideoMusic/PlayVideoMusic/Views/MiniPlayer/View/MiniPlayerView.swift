@@ -19,7 +19,7 @@ struct MiniPlayerView: View {
     let widthMiniatureVideoView: CGFloat = UIScreen.main.bounds.width / 5
   
     // MARK: Property Player Video z
-    @StateObject var playerViewModel = PlayerViewModel()
+    @ObservedObject var playerViewModel: PlayerViewModel
     
     var body: some View {
         VStack(alignment: miniPlayer.isNormalPlayer ? .center : .leading) {

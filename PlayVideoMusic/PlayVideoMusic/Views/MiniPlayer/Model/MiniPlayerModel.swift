@@ -10,11 +10,11 @@ import Foundation
 // MARK: - Welcome
 struct MiniPlayerModel: Codable {
     let videoId, ip, userCountryCode, status: String
-    let extractorType, extractorMethod: String
+    let extractorType, extractorMethod: String?
     let metaInfo: MetaInfo
-    let videoStatistics: VideoStatistics
+    let videoStatistics: VideoStatistics?
     let qualities: [Quality]
-    let youtubeVideoMaxQuality: YoutubeVideoMaxQuality
+    let youtubeVideoMaxQuality: YoutubeVideoMaxQuality?
 
     enum CodingKeys: String, CodingKey {
         case videoId, ip, userCountryCode, status, extractorType, extractorMethod, metaInfo, videoStatistics, qualities, youtubeVideoMaxQuality
@@ -56,8 +56,8 @@ struct Quality: Codable {
 
 // MARK: - YoutubeVideoMaxQuality
 struct YoutubeVideoMaxQuality: Codable {
-    let itag: Int
-    let format, qualityLabel: String
+    let itag: Int?
+    let format, qualityLabel: String?
     let type, audioBitrate: Int
 }
 

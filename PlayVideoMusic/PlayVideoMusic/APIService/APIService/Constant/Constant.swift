@@ -52,5 +52,8 @@ struct Constant {
         static let iconPauseNormalButton: String = "ic_pause_normal"
         static let iconShuffleNormalButton: String = "ic_shuffle_normal"
         static let iconRepeatNormalButton: String = "ic_repeat_normal"
+        
+        static let iconMore: String = "ic_more"
+        static let iconDownload: String = "ic_download"
     }
 }

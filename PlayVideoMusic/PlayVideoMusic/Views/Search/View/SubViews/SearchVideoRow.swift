@@ -6,9 +6,28 @@
 //
 
 import SwiftUI
+import CoreData
+import Combine
 
 struct SearchVideoRow: View {
-    let snippet: Snippet
+    @Binding var showingPopover: Bool
+//    let snippet: Snippet
+    let item: Item
+    
+    @Environment(\.managedObjectContext) var videoCoreData
+    @StateObject var downloader = VideoDownloaderViewModel()
+    
+    var snippet: Snippet {
+        return item.snippet ?? Snippet(publishedAt: nil,
+                                       channelID: nil,
+                                       title:
+                                        nil,
+                                       snippetDescription: nil,
+                                       thumbnails: nil,
+                                       channelTitle: nil,
+                                       liveBroadcastContent: nil,
+                                       publishTime: nil)
+    }
     var body: some View {
         ZStack {
             Colors.color161A1A
@@ -32,17 +51,56 @@ struct SearchVideoRow: View {
                         .foregroundColor(Colors.color99999F)
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
+                VStack(spacing: 8) {
+                    Button {
+                        downloader.videoCoreData = videoCoreData
+                        downloader.audioOnly = false
+                        downloader.item = item
+                        //                    showingPopover = true
+                        //                    downloader.$fileLocalURL
+                        //                        .filter { $0 != nil }
+                        //                        .sink { _ in
+                        //                            saveCoreData()
+                        //                        }
+                        //                        .store(in: &downloader.subscriptions)
+                    } label: {
+                        Image(Constant.AssetsImage.iconDownload)
+                            .resizable()
+                            .scaledToFit()
+                    }
+                    .frame(width: 32, height: 32)
+                    Button {
+                        downloader.videoCoreData = videoCoreData
+                        downloader.audioOnly = true
+                        downloader.item = item
+                        //                    showingPopover = true
+                        //                    downloader.$fileLocalURL
+                        //                        .filter { $0 != nil }
+                        //                        .sink { _ in
+                        //                            saveCoreData()
+                        //                        }
+                        //                        .store(in: &downloader.subscriptions)
+                    } label: {
+                        Image(Constant.AssetsImage.iconTabbarPlaylists)
+                            .resizable()
+                            .scaledToFit()
+                    }
+                    .frame(width: 24, height: 24)
+                }
+                
             }
-            .padding(EdgeInsets(top: 4, leading: 4, bottom: 5, trailing: 4))
+            .padding(EdgeInsets(top: 4, leading: 4, bottom: 4, trailing: 4))
             .frame(maxWidth: .infinity)
             .background(Colors.color161A1A)
         }
     }
 }
 
-struct SearchVideoRow_Previews: PreviewProvider {
-    static var previews: some View {
-        SearchVideoRow(snippet: dev.snippet)
-            .previewLayout(.sizeThatFits)
-    }
-}
+//struct SearchVideoRow_Previews: PreviewProvider {
+   
+//    static var previews: some View {
+//        @State private var showingPopover = false
+//        SearchVideoRow(snippet: dev.snippet, showingPopover: showingPopover)
+//            .previewLayout(.sizeThatFits)
+//    }
+//}
