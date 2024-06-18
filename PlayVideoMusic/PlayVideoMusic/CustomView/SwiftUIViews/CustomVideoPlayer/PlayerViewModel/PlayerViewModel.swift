@@ -7,6 +7,7 @@
 
 import AVFoundation
 import Combine
+import AVKit
 
 enum PlayVideoState {
     case playing
@@ -15,8 +16,25 @@ enum PlayVideoState {
 }
 
 final class PlayerViewModel: ObservableObject {
-    let player = AVPlayer()
-    @Published var isInPipMode: Bool = false
+    lazy var player: AVPlayer = {
+        let player = AVPlayer()
+        let playerLayer = AVPlayerLayer()
+
+        playerLayer.player = player
+//        layer.addSublayer(playerLayer)
+//        playerLayer.videoGravity = .resizeAspect
+//        playerLayer.frame = self.bounds
+//
+//        if let playerLayer = playerLayer {
+            if AVPictureInPictureController.isPictureInPictureSupported() {
+                let pipController = AVPictureInPictureController(playerLayer: playerLayer)!
+            }
+//        }
+        
+        return player
+    }()
+    
+    @Published var isInPipMode: Bool = true
     
     @Published var isEditingCurrentTime = false
     @Published var currentTime: Double = .zero
@@ -85,6 +103,7 @@ final class PlayerViewModel: ObservableObject {
         currentTime = .zero
         duration = nil
         player.replaceCurrentItem(with: item)
+        player.play()
         
         item.publisher(for: \.status)
             .filter({ $0 == .readyToPlay })
@@ -99,6 +118,7 @@ final class PlayerViewModel: ObservableObject {
         currentTime = .zero
         duration = nil
         player.replaceCurrentItem(with: avPlayerItem)
+        player.play()
         
         avPlayerItem.publisher(for: \.status)
             .filter({ $0 == .readyToPlay })

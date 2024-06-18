@@ -42,6 +42,7 @@ class MiniPlayerViewModel: ObservableObject {
                 guard let self = self else {
                     return
                 }
+                print("ANHND47 miniPlayer: \(miniPlayer)")
                 self.isHaveUrl = true
                 self.miniPlayData = miniPlayer
             })

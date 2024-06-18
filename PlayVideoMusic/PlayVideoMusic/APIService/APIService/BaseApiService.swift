@@ -55,6 +55,8 @@ extension BaseApiService {
 
                 let decoder = JSONDecoder()
                 let value = try decoder.decode(T.self, from: result.data)
+                print("request: \(urlRequest.url?.absoluteString ?? "")")
+                print("response: \(String(data: result.data, encoding: .utf8) ?? "")")
                 return Response(value: value, response: result.response)
             }
             .mapError { error -> APIError in

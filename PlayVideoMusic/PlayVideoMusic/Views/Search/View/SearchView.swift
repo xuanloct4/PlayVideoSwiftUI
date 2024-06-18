@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 struct SearchView: View {
     @StateObject private var searchViewModel: SearchVideoViewModel = SearchVideoViewModel()
@@ -13,6 +14,8 @@ struct SearchView: View {
     @State private var isSearching: Bool = false
     @State private var isSearchSelected: Bool = false
     @EnvironmentObject var player: MiniPlayerViewModel
+    
+    @State private var showingPopover = false
     
     var safeArea = UIApplication.shared.windows.first?.safeAreaInsets
     
@@ -31,6 +34,23 @@ struct SearchView: View {
         .ignoresSafeArea()
         .onTapGesture {
             UIApplication.shared.endEditing()
+        }
+        .popover(isPresented: $showingPopover) {
+            VStack {
+                Text("Popover")
+                    .font(.headline)
+                    .padding()
+                Button {
+                    
+                } label: {
+                    Text("Fetch video Info")
+                        .font(.headline)
+                        .padding()
+                }
+                    
+                 
+                    .frame(width: 200, height: 72)
+            }
         }
     }
 }
@@ -67,16 +87,18 @@ extension SearchView {
             ScrollView {
                 LazyVStack {
                     ForEach(searchViewModel.videoItems) { item in
-                        if let snippet = item.snippet {
-                            SearchVideoRow(snippet: snippet)
+//                        if let snippet = item.snippet {
+                        SearchVideoRow(showingPopover: $showingPopover, item: item)
                                 .onTapGesture {
                                     withAnimation {
                                         self.player.isNormalPlayer = true
                                     }
                                     self.player.isShowPlayer = true
                                     self.player.item = item
+                                    
+                                   
                                 }
-                        }
+//                        }
                     }
                 }
             }
